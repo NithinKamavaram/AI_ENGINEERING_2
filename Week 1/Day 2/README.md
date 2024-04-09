@@ -19,25 +19,13 @@ In this repository, we'll walk you through the steps to create a Large Language 
   4. Prompt Engineering Principles
   5. Testing Your Prompt
 
+Complete the notebook in this repository, or head to [this notebook](https://colab.research.google.com/drive/1VMyF3WOCETYbRx01z99QBjycB4cRwquv?usp=sharing) and follow along with the instructions!
+
+
 - 🤝 Breakout Room #2:
-  1. 🖥️ Accessing "gpt-3.5-turbo" (ChatGPT) like a developer
-  2. 🏗️ Building Your First LLM App
+  1. 🏗️ Building Your First LLM App
   3. 🐳 Containerizing our App
   4. 🚀 Deploying Your First LLM App
-
-Are you ready? Let's get started!
-
-<details>
-  <summary>🖥️ Accessing "gpt-3.5-turbo" (ChatGPT) like a developer</summary>
-
-1. Complete the notebook in this repository, or head to [this notebook](https://colab.research.google.com/drive/1VMyF3WOCETYbRx01z99QBjycB4cRwquv?usp=sharing) and follow along with the instructions!
-
-2. Complete the notebook and try out your own system/assistant messages!
-
-That's it! Head to the next step and start building your application!
-
-</details>
-
 
 <details>
   <summary>🏗️ Building Your First LLM App</summary>
