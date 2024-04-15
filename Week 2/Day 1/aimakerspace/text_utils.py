@@ -1,6 +1,6 @@
 import os
 from typing import List
-
+import fitz
 
 class TextFileLoader:
     def __init__(self, path: str, encoding: str = "utf-8"):
@@ -13,6 +13,8 @@ class TextFileLoader:
             self.load_directory()
         elif os.path.isfile(self.path) and self.path.endswith(".txt"):
             self.load_file()
+        elif os.path.isfile(self.path) and self.path.endswith(".pdf"):
+            self.load_pdf()
         else:
             raise ValueError(
                 "Provided path is neither a valid directory nor a .txt file."
@@ -20,7 +22,16 @@ class TextFileLoader:
 
     def load_file(self):
         with open(self.path, "r", encoding=self.encoding) as f:
+            print("using txt file")
             self.documents.append(f.read())
+            
+    def load_pdf(self):
+        print("using pdf file")
+        with fitz.open(self.path) as doc:
+            text = ""
+            for page in doc:
+                text += page.get_text()
+            self.documents.append(text)
 
     def load_directory(self):
         for root, _, files in os.walk(self.path):
@@ -64,6 +75,7 @@ class CharacterTextSplitter:
 
 if __name__ == "__main__":
     loader = TextFileLoader("data/KingLear.txt")
+    #loader = TextFileLoader("data/test_pdf.pdf")
     loader.load()
     splitter = CharacterTextSplitter()
     chunks = splitter.split_texts(loader.documents)

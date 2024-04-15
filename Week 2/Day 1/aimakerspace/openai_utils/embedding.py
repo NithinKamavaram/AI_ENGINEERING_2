@@ -4,7 +4,7 @@ import openai
 from typing import List
 import os
 import asyncio
-
+import numpy as np
 
 class EmbeddingModel:
     def __init__(self, embeddings_model_name: str = "text-embedding-3-small"):
@@ -29,7 +29,7 @@ class EmbeddingModel:
 
     async def async_get_embedding(self, text: str) -> List[float]:
         embedding = await self.async_client.embeddings.create(
-            input=text, model=self.embeddings_model_name
+            input=text, model=self.embeddings_model_name,  dimensions=256
         )
 
         return embedding.data[0].embedding
@@ -47,13 +47,36 @@ class EmbeddingModel:
         )
 
         return embedding.data[0].embedding
+    
 
 
 if __name__ == "__main__":
+    def normalize_l2(x):
+        x = np.array(x)
+        if x.ndim == 1:
+            norm = np.linalg.norm(x)
+            if norm == 0:
+                return x
+            return x / norm
+        else:
+            norm = np.linalg.norm(x, 2, axis=1, keepdims=True)
+            return np.where(norm == 0, x, x / norm)
     embedding_model = EmbeddingModel()
     print(asyncio.run(embedding_model.async_get_embedding("Hello, world!")))
+    print("*******")
+    print(len(asyncio.run(embedding_model.async_get_embedding("Hello, world!"))))
+    print("*******")
+    cut_dim = asyncio.run(embedding_model.async_get_embedding("Hello, world!"))[:128]
+    norm_dim = normalize_l2(cut_dim)
+    print(len(norm_dim))
+    print("*******")
     print(
         asyncio.run(
             embedding_model.async_get_embeddings(["Hello, world!", "Goodbye, world!"])
         )
     )
+    print("*******")
+    print(len(asyncio.run(
+            embedding_model.async_get_embeddings(["Hello, world!", "Goodbye, world!"])
+        )[0]))
+    print("*******")
