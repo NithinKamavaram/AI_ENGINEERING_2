@@ -13,13 +13,13 @@ The Colab version of the Assignment can be found [here](https://colab.research.g
 
 ## Build 🏗️
 
-- 🤝 Breakout Room #1:
+- 🤝 Breakout Room Part #1:
   1. Install required libraries
   2. Set Environment Variables
   3. Creating a simple RAG pipeline with [LangChain v0.1.0](https://blog.langchain.dev/langchain-v0-1-0/)
   
 
-- 🤝 Breakout Room #2:
+- 🤝 Breakout Room Part #2:
   1. Synthetic Dataset Generation for Evaluation using the [Ragas](https://github.com/explodinggradients/ragas)
   2. Evaluating our pipeline with Ragas
   3. Making Adjustments to our RAG Pipeline
