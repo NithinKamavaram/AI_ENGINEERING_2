@@ -1,0 +1,11 @@
+langchain == 0.1.16
+langchain-community == 0.0.34
+langchain-core == 0.1.46
+langchain-openai == 0.1.4
+langchain-text-splitters == 0.0.1
+chainlit == 0.7.700
+openai == 1.23.6
+python-dotenv == 1.0.1
+PyMuPDF == 1.24.2
+qdrant-client == 1.9.0
+lark == 1.1.9
